@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تفاصيل المتجر الإلكتروني | SyriaBit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0d2473",
+              accent: "#00cfff",
+              light: "#ffffff",
+            },
+            fontFamily: {
+              heading: ["Syne", "sans-serif"],
+              body: ["IBM Plex Sans Arabic", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "IBM Plex Sans Arabic", sans-serif;
+        background-color: #f8fafc; /* light slate */
+        color: #1a202c;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Syne", "IBM Plex Sans Arabic", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="antialiased text-slate-800">
+    <!-- Navbar (Simple) -->
+    <nav
+      class="bg-primary px-6 py-4 flex justify-between items-center shadow-md"
+    >
+      <a href="index.html" class="flex items-center gap-3">
+        <img
+          src="https://wsrv.nl/?url=https://i.ibb.co/BV8McBZF/IMG-20260520-202629-970.webp&output=webp&w=120&q=80"
+          alt="SyriaBit"
+          class="w-10 h-10 object-contain rounded"
+        />
+        <span
+          class="text-white font-heading font-bold text-xl tracking-wide"
+          dir="ltr"
+          >SyriaBit</span
+        >
+      </a>
+      <a
+        href="index.html"
+        class="text-white/80 hover:text-white font-medium flex items-center gap-2 transition-colors"
+      >
+        <i class="ph ph-arrow-right"></i>
+        العودة للرئيسية
+      </a>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 py-16">
+      <div
+        class="bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden"
+      >
+        <!-- Header -->
+        <div
+          class="bg-primary p-8 md:p-12 text-center text-white relative overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay"
+          ></div>
+          <div class="relative z-10 max-w-2xl mx-auto relative">
+            <div
+              class="w-20 h-20 mx-auto bg-white/10 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="ph-fill ph-storefront text-5xl text-accent"></i>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-bold font-heading mb-4">
+              احصل على متجرك الإلكتروني المتكامل
+            </h1>
+            <p class="text-lg md:text-xl text-slate-200">
+              حل شامل لإطلاق عملك على الإنترنت باحترافية وسهولة.
+            </p>
+          </div>
+        </div>
+
+        <!-- Features List -->
+        <div class="p-8 md:p-12">
+          <h2
+            class="text-2xl font-bold text-primary mb-8 border-b-2 border-accent inline-block pb-2"
+          >
+            مزايا المتجر و الخدمات المشمولة
+          </h2>
+          <div class="grid grid-cols-3 gap-2 md:gap-6 mb-12 w-full">
+            <div
+              class="flex flex-col items-center text-center gap-2 md:gap-4 p-3 sm:p-6 rounded-2xl bg-slate-50 border border-slate-100 transition-all hover:shadow-md hover:border-slate-300"
+            >
+              <i
+                class="ph-fill ph-layout text-3xl sm:text-4xl md:text-5xl text-accent shrink-0"
+              ></i>
+              <div>
+                <h3
+                  class="font-bold text-[12px] sm:text-lg md:text-xl mb-1 leading-tight"
+                >
+                  واجهة مستخدم احترافية
+                </h3>
+                <p
+                  class="text-slate-600 text-[10px] sm:text-sm md:text-base leading-tight md:leading-relaxed"
+                >
+                  تصميم عصري سريع ومتجاوب مع جميع الشاشات (الهواتف الذكية
+                  والحواسيب).
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex flex-col items-center text-center gap-2 md:gap-4 p-3 sm:p-6 rounded-2xl bg-slate-50 border border-slate-100 transition-all hover:shadow-md hover:border-slate-300"
+            >
+              <i
+                class="ph-fill ph-lock-key text-3xl sm:text-4xl md:text-5xl text-accent shrink-0"
+              ></i>
+              <div>
+                <h3
+                  class="font-bold text-[12px] sm:text-lg md:text-xl mb-1 leading-tight"
+                >
+                  لوحة تحكم كاملة
+                </h3>
+                <p
+                  class="text-slate-600 text-[10px] sm:text-sm md:text-base leading-tight md:leading-relaxed"
+                >
+                  إدارة شاملة للمنتجات، الطلبات، والتصنيفات، مع إعدادات متقدمة
+                  للتحكم في كافة تفاصيل ومظهر المتجر.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex flex-col items-center text-center gap-2 md:gap-4 p-3 sm:p-6 rounded-2xl bg-slate-50 border border-slate-100 transition-all hover:shadow-md hover:border-slate-300"
+            >
+              <i
+                class="ph-fill ph-users text-3xl sm:text-4xl md:text-5xl text-accent shrink-0"
+              ></i>
+              <div>
+                <h3
+                  class="font-bold text-[12px] sm:text-lg md:text-xl mb-1 leading-tight"
+                >
+                  إدارة المستخدمين
+                </h3>
+                <p
+                  class="text-slate-600 text-[10px] sm:text-sm md:text-base leading-tight md:leading-relaxed"
+                >
+                  نظام تسجيل دخول، إدارة صلاحيات مرنة، وحسابات خاصة للعملاء
+                  لمتابعة الطلبات وتاريخ الشراء.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex flex-col items-center text-center gap-2 md:gap-4 p-3 sm:p-6 rounded-2xl bg-slate-50 border border-slate-100 transition-all hover:shadow-md hover:border-slate-300"
+            >
+              <i
+                class="ph-fill ph-robot text-3xl sm:text-4xl md:text-5xl text-accent shrink-0"
+              ></i>
+              <div>
+                <h3
+                  class="font-bold text-[12px] sm:text-lg md:text-xl mb-1 leading-tight"
+                >
+                  بوت تيليجرام تفاعلي
+                </h3>
+                <p
+                  class="text-slate-600 text-[10px] sm:text-sm md:text-base leading-tight md:leading-relaxed"
+                >
+                  بوت متكامل للإدمن لتلقي إشعارات الطلبات وإدارتها، وبوت
+                  للمستخدمين للتسوق المباشر والبحث عن المنتجات.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex flex-col items-center text-center gap-2 md:gap-4 p-3 sm:p-6 rounded-2xl bg-slate-50 border border-slate-100 transition-all hover:shadow-md hover:border-slate-300"
+            >
+              <i
+                class="ph-fill ph-hard-drives text-3xl sm:text-4xl md:text-5xl text-accent shrink-0"
+              ></i>
+              <div>
+                <h3
+                  class="font-bold text-[12px] sm:text-lg md:text-xl mb-1 leading-tight"
+                >
+                  استضافة ودومين
+                </h3>
+                <p
+                  class="text-slate-600 text-[10px] sm:text-sm md:text-base leading-tight md:leading-relaxed"
+                >
+                  توفير استضافة سريعة وقوية لموقعك، مع حجز اسم نطاق (Domain) خاص
+                  بك للسنة الأولى.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex flex-col items-center text-center gap-2 md:gap-4 p-3 sm:p-6 rounded-2xl bg-slate-50 border border-slate-100 transition-all hover:shadow-md hover:border-slate-300"
+            >
+              <i
+                class="ph-fill ph-credit-card text-3xl sm:text-4xl md:text-5xl text-accent shrink-0"
+              ></i>
+              <div>
+                <h3
+                  class="font-bold text-[12px] sm:text-lg md:text-xl mb-1 leading-tight"
+                >
+                  وسائل دفع متنوعة
+                </h3>
+                <p
+                  class="text-slate-600 text-[10px] sm:text-sm md:text-base leading-tight md:leading-relaxed"
+                >
+                  ربط مع بوابات الدفع الإلكتروني (مثل شام كاش APIS)، بالإضافة
+                  إلى دعم الدفع عند الاستلام.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex flex-col items-center text-center gap-2 md:gap-4 p-3 sm:p-6 rounded-2xl bg-slate-50 border border-slate-100 transition-all hover:shadow-md hover:border-slate-300"
+            >
+              <i
+                class="ph-fill ph-plugs-connected text-3xl sm:text-4xl md:text-5xl text-accent shrink-0"
+              ></i>
+              <div>
+                <h3
+                  class="font-bold text-[12px] sm:text-lg md:text-xl mb-1 leading-tight"
+                >
+                  ربط مع أي API
+                </h3>
+                <p
+                  class="text-slate-600 text-[10px] sm:text-sm md:text-base leading-tight md:leading-relaxed"
+                >
+                  إمكانية ربط الموقع بأي API أو مزود خدمة بكل سهولة من لوحة
+                  التحكم مباشرة.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex flex-col items-center text-center gap-2 md:gap-4 p-3 sm:p-6 rounded-2xl bg-slate-50 border border-slate-100 transition-all hover:shadow-md hover:border-slate-300"
+            >
+              <i
+                class="ph-fill ph-headset text-3xl sm:text-4xl md:text-5xl text-accent shrink-0"
+              ></i>
+              <div>
+                <h3
+                  class="font-bold text-[12px] sm:text-lg md:text-xl mb-1 leading-tight"
+                >
+                  دعم فني 24/7
+                </h3>
+                <p
+                  class="text-slate-600 text-[10px] sm:text-sm md:text-base leading-tight md:leading-relaxed"
+                >
+                  نقدم لك دعماً فنياً متواصلاً على مدار الساعة لضمان عمل موقعك
+                  بكفاءة عالية وبدون انقطاع.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex flex-col items-center text-center gap-2 md:gap-4 p-3 sm:p-6 rounded-2xl bg-slate-50 border border-slate-100 transition-all hover:shadow-md hover:border-slate-300"
+            >
+              <i
+                class="ph-fill ph-graduation-cap text-3xl sm:text-4xl md:text-5xl text-accent shrink-0"
+              ></i>
+              <div>
+                <h3
+                  class="font-bold text-[12px] sm:text-lg md:text-xl mb-1 leading-tight"
+                >
+                  دورة تدريبية شاملة
+                </h3>
+                <p
+                  class="text-slate-600 text-[10px] sm:text-sm md:text-base leading-tight md:leading-relaxed"
+                >
+                  كورس مخصص يشرح لك كيفية إدارة متجرك ولوحة التحكم خطوة بخطوة
+                  بكل سهولة.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Special Feature -->
+          <div class="mb-12 text-center">
+            <div
+              class="inline-flex items-center gap-4 bg-gradient-to-r from-amber-50 to-yellow-50 border border-amber-200 px-6 py-4 rounded-xl shadow-sm hover:shadow-md transition-all"
+            >
+              <i
+                class="ph-fill ph-sparkle text-3xl sm:text-4xl text-amber-500 animate-pulse"
+              ></i>
+              <div class="text-right">
+                <span class="block text-sm font-bold text-amber-600 mb-1"
+                  >ميزة خاصة وحصرية</span
+                >
+                <p
+                  class="text-amber-700 font-medium text-sm sm:text-base leading-relaxed"
+                >
+                  شات بوت مدمج بالذكاء الاصطناعي لمتجرك للرد على العملاء
+                  ومساعدتك بلوحة التحكم، وتستطيع تخصيصه يدوياً بكل سهولة!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pricing Section -->
+          <div class="bg-primary/5 rounded-2xl p-8 border border-primary/10">
+            <div class="flex items-center justify-center gap-3 mb-6">
+              <i class="ph-fill ph-tag text-3xl text-primary"></i>
+              <h2 class="text-2xl font-bold text-primary m-0">
+                تكلفة الاستثمار في متجرك
+              </h2>
+            </div>
+
+            <div class="space-y-4 mb-8">
+              <div
+                class="flex justify-between items-center border-b border-slate-200 pb-3"
+              >
+                <div class="flex items-center gap-3">
+                  <i class="ph-fill ph-code text-xl text-slate-400"></i>
+                  <span class="text-slate-800 font-bold sm:text-lg"
+                    >برمجة وتطوير الموقع</span
+                  >
+                </div>
+                <span class="font-bold text-primary text-xl font-sans" dir="ltr"
+                  >$15</span
+                >
+              </div>
+              <div
+                class="flex justify-between items-center border-b border-slate-200 pb-3"
+              >
+                <div class="flex items-center gap-3">
+                  <i class="ph-fill ph-hard-drives text-xl text-slate-400"></i>
+                  <span class="text-slate-800 font-bold sm:text-lg"
+                    >الاستضافة والدومين</span
+                  >
+                </div>
+                <span class="font-bold text-primary text-xl font-sans" dir="ltr"
+                  >$15</span
+                >
+              </div>
+            </div>
+
+            <div
+              class="flex flex-col items-center gap-2 mb-8 mt-12 bg-white p-6 rounded-xl border border-slate-100 shadow-sm"
+            >
+              <div class="flex items-center gap-3">
+                <span
+                  class="text-slate-400 line-through text-2xl font-bold font-sans"
+                  dir="ltr"
+                  >$50</span
+                >
+                <span
+                  class="bg-accent/10 text-accent font-bold px-3 py-1 rounded-full text-sm"
+                  >عرض خاص</span
+                >
+              </div>
+              <div class="mt-2 flex items-center justify-center gap-3">
+                <span
+                  class="text-5xl font-extrabold text-primary font-sans"
+                  dir="ltr"
+                  >$30</span
+                >
+                <span class="text-lg text-slate-500 font-normal">شهرياً</span>
+              </div>
+            </div>
+
+            <a
+              href="https://wa.me/212773963897?text=اريد%20الاستفسار%20عن%20المتاجر%20الإلكترونية"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full sm:w-auto mx-auto flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold px-6 py-2.5 rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-base"
+            >
+              <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
+              اطلب متجرك عبر واتساب
+            </a>
+            <p class="text-center text-slate-500 text-sm mt-4">
+              نحن جاهزون للإجابة على جميع استفساراتك.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

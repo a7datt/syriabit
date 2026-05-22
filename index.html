@@ -1,474 +1,845 @@
-<!DOCTYPE html>
+<!doctype html>
 <html dir="rtl" lang="ar">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SyriaBit</title>
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Syne:wght@400..800&display=swap" rel="stylesheet">
-  
-  <!-- Phosphor Icons for elegant scalable icons inside a single file -->
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  
-  <!-- Setup styling -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#0d2473',
-            accent: '#00cfff',
-            light: '#ffffff'
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SyriaBit</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Syne:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Phosphor Icons for elegant scalable icons inside a single file -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Setup styling -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0d2473",
+              accent: "#00cfff",
+              light: "#ffffff",
+            },
+            fontFamily: {
+              heading: ["Syne", "sans-serif"],
+              body: ["IBM Plex Sans Arabic", "sans-serif"],
+            },
           },
-          fontFamily: {
-            heading: ['Syne', 'sans-serif'],
-            body: ['IBM Plex Sans Arabic', 'sans-serif']
-          }
+        },
+      };
+    </script>
+    <style>
+      /* Professional Polish Styling rules integration */
+      body {
+        font-family: "IBM Plex Sans Arabic", sans-serif;
+        background-color: #ffffff;
+        color: #1a202c;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Syne", "IBM Plex Sans Arabic", sans-serif;
+      }
+
+      /* Reveal Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
       }
-    }
-  </script>
-  <style>
-    /* Professional Polish Styling rules integration */
-    body {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      background-color: #ffffff;
-      color: #1a202c;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Syne', 'IBM Plex Sans Arabic', sans-serif;
-    }
-    
-    /* Reveal Animations */
-    .fade-in-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    .fade-in-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    /* Button interaction */
-    .sweep-hover {
-      position: relative;
-      overflow: hidden;
-      transition: color 0.4s ease;
-      z-index: 1;
-    }
-    .sweep-hover::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 0; height: 100%;
-      background-color: #00cfff;
-      transition: width 0.4s ease;
-      z-index: -1;
-    }
-    .sweep-hover:hover::before {
-      width: 100%;
-    }
-    .sweep-hover:hover {
-      color: #0d2473;
-    }
-
-    /* Hero Section specific rules */
-    .hero-bg {
-      background-image: url('https://wsrv.nl/?url=https://i.ibb.co/chYgJRcK/hero-bg.png&output=webp&w=1920&q=80');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      background-color: #0d2473; /* Fallback */
-    }
-    .hero-cut {
-      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    }
-    @media (min-width: 768px) {
-      .hero-cut {
-         clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+      .animate-fade-in {
+        animation: fadeIn 0.4s ease forwards;
       }
-    }
+      .tab-btn.active-tab {
+        background-color: #f8fafc;
+      }
+      .tab-btn .tab-arrow {
+        transition:
+          transform 0.3s ease,
+          color 0.3s ease;
+      }
+      .tab-btn.active-tab .tab-arrow {
+        transform: rotate(180deg);
+        color: #00cfff;
+      }
 
-    /* Browser Mockup window for iFrames */
-    .browser-mockup {
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      overflow: hidden;
-      background: white;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
-    .browser-header {
-      background: #f1f5f9;
-      padding: 0.5rem;
-      display: flex;
-      gap: 0.5rem;
-      border-bottom: 1px solid #e2e8f0;
-    }
-    .browser-dot {
-      width: 12px; height: 12px; border-radius: 50%;
-    }
-    .dot-red { background: #ef4444; }
-    .dot-yellow { background: #eab308; }
-    .dot-green { background: #22c55e; }
-    
-    .iframe-container {
-      position: relative;
-      height: 250px;
-      background: #f8fafc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .iframe-container iframe {
-      width: 200%;
-      height: 200%;
-      border: none;
-      position: absolute;
-      top: 0; left: 0;
-      transform: scale(0.5);
-      transform-origin: top left;
-      z-index: 2;
-      background-color: #ffffff;
-    }
-    .iframe-fallback {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #64748b;
-      z-index: 1; /* beneath iframe */
-    }
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.8s ease-out,
+          transform 0.8s ease-out;
+      }
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-    /* Interactive state modifiers */
-    .lift-hover {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .lift-hover:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 25px -5px rgba(0, 207, 255, 0.2), 0 10px 10px -5px rgba(0, 207, 255, 0.1);
-    }
-    .cyan-glow:hover {
-      box-shadow: 0 0 20px rgba(0, 207, 255, 0.4);
-    }
-  </style>
-</head>
-<body class="bg-light antialiased text-slate-800">
-  <!-- Scroll Progress Bar -->
-  <div class="fixed top-0 right-0 w-2 h-full z-[100] pointer-events-none">
-    <div id="scroll-progress" class="w-full bg-accent h-0 transition-none shadow-[0_0_15px_rgba(0,207,255,1)]"></div>
-  </div>
-  
-  <!-- Hero Section -->
-  <section class="hero-bg hero-cut min-h-[95vh] flex items-center justify-center pt-24 pb-32 px-6 overflow-hidden">
-    <div class="absolute inset-0 bg-primary/85"></div> <!-- Dark overlay -->
-    
-    <div class="relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center mt-12">
-      <!-- Glow behind logo -->
-      <div class="relative inline-block mb-10 fade-in-up">
-        <div class="absolute -inset-4 bg-accent/40 rounded-full blur-2xl filter"></div>
-        <img src="https://wsrv.nl/?url=https://i.ibb.co/DfRYz0kf/logo.jpg&output=webp&w=400&q=85" alt="SyriaBit Logo" class="relative max-w-[220px] md:max-w-[280px] object-contain drop-shadow-2xl rounded-2xl" fetchpriority="high" onerror="this.src='https://placehold.co/400x400/0d2473/ffffff?text=SyriaBit'">
-      </div>
-      
-      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold font-heading text-white mb-6 tracking-tight fade-in-up" style="transition-delay: 0.2s">
-        شركة <span class="text-accent" dir="ltr">SyriaBit</span>
-      </h1>
-      
-      <p class="text-xl md:text-2xl text-slate-200 mb-10 font-medium max-w-2xl mx-auto leading-relaxed fade-in-up" style="transition-delay: 0.4s">
-        للحلول البرمجية. نحن نمكن الشباب لبناء وتطوير قدراتهم التقنية في عالم يتسارع فيه الابتكار.
-      </p>
-      
-      <div class="fade-in-up" style="transition-delay: 0.6s">
-        <a href="#projects" class="sweep-hover inline-flex items-center gap-2 bg-transparent border-2 border-accent text-accent font-bold py-4 px-8 rounded-full text-lg transition-all shadow-[0_0_15px_rgba(0,207,255,0.3)]">
-          تعرف على مشاريعنا
-          <i class="ph flex ph-arrow-down text-xl"></i>
-        </a>
-      </div>
-    </div>
-  </section>
+      /* Button interaction */
+      .sweep-hover {
+        position: relative;
+        overflow: hidden;
+        transition: color 0.4s ease;
+        z-index: 1;
+      }
+      .sweep-hover::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background-color: #00cfff;
+        transition: width 0.4s ease;
+        z-index: -1;
+      }
+      .sweep-hover:hover::before {
+        width: 100%;
+      }
+      .sweep-hover:hover {
+        color: #0d2473;
+      }
 
-  <!-- Projects Section -->
-  <section id="projects" class="py-24 px-6 max-w-7xl mx-auto">
-    <div class="text-center mb-16 fade-in-up">
-      <h2 class="text-3xl md:text-5xl font-bold font-heading text-primary inline-block relative border-b-4 border-accent pb-2">
-        مشاريعنا
-      </h2>
-    </div>
+      /* Hero Section specific rules */
+      .hero-bg {
+        background-image: url("https://i.ibb.co/RTfbMw63/1779432235656.png");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        background-color: #0d2473; /* Fallback */
+      }
+      .hero-cut {
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      }
+      @media (min-width: 768px) {
+        .hero-cut {
+          clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+      }
 
-    <!-- Sub-section A - Electronic Stores -->
-    <div class="mb-12 w-full max-w-5xl mx-auto flex flex-col gap-8 fade-in-up">
-      <!-- Accordion Header -->
-      <button class="Accordion-Btn w-full flex items-center justify-between p-6 bg-white border border-slate-200 rounded-2xl shadow-sm hover:border-accent hover:shadow-md transition-all group">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-accent group-hover:bg-accent/10 transition-colors">
-            <i class="ph-fill ph-storefront text-2xl"></i>
-          </div>
-          <h3 class="text-2xl md:text-3xl font-bold text-primary m-0">متاجر إلكترونية</h3>
-        </div>
-        <i class="ph-bold ph-caret-down text-slate-400 text-2xl transition-transform duration-300 Accordion-Icon"></i>
-      </button>
-      
-      <!-- Accordion Content -->
-      <div class="Accordion-Content hidden opacity-0 transition-opacity duration-300">
-        <p class="text-slate-600 mb-8 text-lg text-center px-4 mt-6">نصمم ونطور متاجر إلكترونية احترافية وسريعة ومتجاوبة مع جميع الأجهزة</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Project 1: VIPro -->
-          <article class="lift-hover cyan-glow browser-mockup flex flex-col transition-all hover:-translate-y-1.5 hover:shadow-[0_0_20px_rgba(0,207,255,0.4)]">
-            <div class="browser-header">
-              <div class="browser-dot dot-red"></div>
-              <div class="browser-dot dot-yellow"></div>
-              <div class="browser-dot dot-green"></div>
-              <div class="ml-auto bg-white/50 px-2 py-0.5 rounded text-[10px] text-slate-400 font-mono flex-1 mx-2 text-left truncate" dir="ltr">vipro.sy</div>
-            </div>
-            <div class="relative w-full h-48 bg-slate-100 overflow-hidden border-b border-slate-100">
-              <img src="https://api.microlink.io/?url=https://vipro.sy&screenshot=true&meta=false&embed=screenshot.url" alt="VIPro Website Screenshot" class="w-full h-full object-cover object-top" loading="lazy" onerror="this.src='https://placehold.co/800x600/f8fafc/64748b?text=vipro.sy'">
-            </div>
-            <div class="p-6 bg-white flex flex-col flex-grow items-center text-center">
-              <h4 class="text-xl font-bold text-primary mb-4">VIPro</h4>
-              <a href="https://vipro.sy" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-primary font-bold hover:text-accent transition-colors pt-4 border-t border-slate-100 w-full justify-center mt-auto">
-                زيارة الموقع
-                <i class="ph ph-arrow-up-right font-bold text-lg"></i>
-              </a>
-            </div>
-          </article>
+      /* Browser Mockup window for iFrames */
+      .browser-mockup {
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        overflow: hidden;
+        background: white;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      .browser-header {
+        background: #f1f5f9;
+        padding: 0.3rem 0.5rem;
+        display: flex;
+        gap: 0.25rem;
+        border-bottom: 1px solid #e2e8f0;
+      }
+      @media (min-width: 768px) {
+        .browser-header {
+          padding: 0.5rem;
+          gap: 0.5rem;
+        }
+      }
+      .browser-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+      @media (min-width: 768px) {
+        .browser-dot {
+          width: 12px;
+          height: 12px;
+        }
+      }
+      .dot-red {
+        background: #ef4444;
+      }
+      .dot-yellow {
+        background: #eab308;
+      }
+      .dot-green {
+        background: #22c55e;
+      }
 
-          <!-- Project 2: Al-Azeaz Store -->
-          <article class="lift-hover cyan-glow browser-mockup flex flex-col transition-all hover:-translate-y-1.5 hover:shadow-[0_0_20px_rgba(0,207,255,0.4)]">
-            <div class="browser-header">
-              <div class="browser-dot dot-red"></div>
-              <div class="browser-dot dot-yellow"></div>
-              <div class="browser-dot dot-green"></div>
-              <div class="ml-auto bg-white/50 px-2 py-0.5 rounded text-[10px] text-slate-400 font-mono flex-1 mx-2 text-left truncate" dir="ltr">alazeaz-store.sy</div>
-            </div>
-            <div class="relative w-full h-48 bg-slate-100 overflow-hidden border-b border-slate-100">
-              <img src="https://api.microlink.io/?url=https://alazeaz-store.sy&screenshot=true&meta=false&embed=screenshot.url" alt="Al-Azeaz Store Screenshot" class="w-full h-full object-cover object-top" loading="lazy" onerror="this.src='https://placehold.co/800x600/f8fafc/64748b?text=alazeaz-store.sy'">
-            </div>
-            <div class="p-6 bg-white flex flex-col flex-grow items-center text-center">
-              <h4 class="text-xl font-bold text-primary mb-4">Al-Azeaz Store</h4>
-              <a href="https://alazeaz-store.sy" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-primary font-bold hover:text-accent transition-colors pt-4 border-t border-slate-100 w-full justify-center mt-auto">
-                زيارة الموقع
-                <i class="ph ph-arrow-up-right font-bold text-lg"></i>
-              </a>
-            </div>
-          </article>
+      .iframe-container {
+        position: relative;
+        height: 250px;
+        background: #f8fafc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .iframe-container iframe {
+        width: 200%;
+        height: 200%;
+        border: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: scale(0.5);
+        transform-origin: top left;
+        z-index: 2;
+        background-color: #ffffff;
+      }
+      .iframe-fallback {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #64748b;
+        z-index: 1; /* beneath iframe */
+      }
 
-          <!-- Project 3: CodeLink Store -->
-          <article class="lift-hover cyan-glow browser-mockup flex flex-col transition-all hover:-translate-y-1.5 hover:shadow-[0_0_20px_rgba(0,207,255,0.4)]">
-            <div class="browser-header">
-              <div class="browser-dot dot-red"></div>
-              <div class="browser-dot dot-yellow"></div>
-              <div class="browser-dot dot-green"></div>
-              <div class="ml-auto bg-white/50 px-2 py-0.5 rounded text-[10px] text-slate-400 font-mono flex-1 mx-2 text-left truncate" dir="ltr">codelink-store.com</div>
-            </div>
-            <div class="relative w-full h-48 bg-slate-100 overflow-hidden border-b border-slate-100">
-              <img src="https://api.microlink.io/?url=https://codelink-store.com&screenshot=true&meta=false&embed=screenshot.url" alt="CodeLink Store Screenshot" class="w-full h-full object-cover object-top" loading="lazy" onerror="this.src='https://placehold.co/800x600/f8fafc/64748b?text=codelink-store.com'">
-            </div>
-            <div class="p-6 bg-white flex flex-col flex-grow items-center text-center">
-              <h4 class="text-xl font-bold text-primary mb-4">CodeLink Store</h4>
-              <a href="https://codelink-store.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-primary font-bold hover:text-accent transition-colors pt-4 border-t border-slate-100 w-full justify-center mt-auto">
-                زيارة الموقع
-                <i class="ph ph-arrow-up-right font-bold text-lg"></i>
-              </a>
-            </div>
-          </article>
-        </div>
-      </div>
+      /* Interactive state modifiers */
+      .lift-hover {
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .lift-hover:hover {
+        transform: translateY(-5px);
+        box-shadow:
+          0 20px 25px -5px rgba(0, 207, 255, 0.2),
+          0 10px 10px -5px rgba(0, 207, 255, 0.1);
+      }
+      .cyan-glow:hover {
+        box-shadow: 0 0 20px rgba(0, 207, 255, 0.4);
+      }
+    </style>
+  </head>
+  <body class="bg-light antialiased text-slate-800">
+    <!-- Scroll Progress Bar -->
+    <div class="fixed top-0 right-0 w-2 h-full z-[100] pointer-events-none">
+      <div
+        id="scroll-progress"
+        class="w-full bg-accent h-0 transition-none shadow-[0_0_15px_rgba(0,207,255,1)]"
+      ></div>
     </div>
 
-    <!-- Sub-section B - Sham Cash API -->
-    <div class="mb-12 w-full max-w-5xl mx-auto flex flex-col gap-8 fade-in-up" style="transition-delay: 0.1s">
-      <button class="Accordion-Btn w-full flex items-center justify-between p-6 bg-white border border-slate-200 rounded-2xl shadow-sm hover:border-accent hover:shadow-md transition-all group">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-accent group-hover:bg-accent/10 transition-colors">
-            <i class="ph-fill ph-code text-2xl"></i>
-          </div>
-          <h3 class="text-2xl md:text-3xl font-bold text-primary m-0">API متكامل لشام كاش</h3>
+    <!-- Hero Section -->
+    <section
+      class="hero-bg hero-cut min-h-[95vh] flex items-center justify-center pt-24 pb-32 px-6 overflow-hidden"
+    >
+      <div class="absolute inset-0 bg-primary/85"></div>
+      <!-- Dark overlay -->
+
+      <div
+        class="relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center mt-12"
+      >
+        <!-- Glow behind logo -->
+        <div class="relative inline-block mb-10 fade-in-up">
+          <div
+            class="absolute -inset-4 bg-accent/40 rounded-full blur-2xl filter"
+          ></div>
+          <img
+            src="https://wsrv.nl/?url=https://i.ibb.co/BV8McBZF/IMG-20260520-202629-970.webp&output=webp&w=400&q=85"
+            alt="SyriaBit Logo"
+            class="relative max-w-[220px] md:max-w-[280px] object-contain drop-shadow-2xl rounded-2xl"
+            fetchpriority="high"
+            onerror="
+              this.src =
+                'https://placehold.co/400x400/0d2473/ffffff?text=SyriaBit'
+            "
+          />
         </div>
-        <i class="ph-bold ph-caret-down text-slate-400 text-2xl transition-transform duration-300 Accordion-Icon"></i>
-      </button>
-      
-      <div class="Accordion-Content hidden opacity-0 transition-opacity duration-300 flex-col items-center content-center px-4 w-full">
-        <p class="text-slate-600 mb-8 text-lg text-center max-w-2xl mx-auto mt-6">نوفر تكاملاً كاملاً مع بوابة الدفع شام كاش لربطها بمشاريعك ومتاجرك الإلكترونية بكل سهولة ومرونة</p>
-        <div class="w-full max-w-[450px] mx-auto">
-          <article class="lift-hover cyan-glow browser-mockup flex flex-col transition-all hover:-translate-y-1.5 hover:shadow-[0_0_20px_rgba(0,207,255,0.4)]">
-            <div class="browser-header">
-              <div class="browser-dot dot-red"></div>
-              <div class="browser-dot dot-yellow"></div>
-              <div class="browser-dot dot-green"></div>
-              <div class="ml-auto bg-white/50 px-2 py-0.5 rounded text-[10px] text-slate-400 font-mono flex-1 mx-2 text-left truncate" dir="ltr">apis.sy</div>
-            </div>
-            <div class="relative w-full h-56 bg-slate-100 overflow-hidden border-b border-slate-100">
-              <img src="https://api.microlink.io/?url=https://apis.sy&screenshot=true&meta=false&embed=screenshot.url" alt="APIs.sy Screenshot" class="w-full h-full object-cover object-top" loading="lazy" onerror="this.src='https://placehold.co/800x600/f8fafc/64748b?text=apis.sy'">
-            </div>
-            <div class="p-6 bg-white flex flex-col flex-grow items-center text-center">
-              <h4 class="text-xl font-bold text-primary mb-4" dir="ltr">APIs.sy</h4>
-              <a href="https://apis.sy" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-primary font-bold hover:text-accent transition-colors pt-4 border-t border-slate-100 w-full justify-center mt-auto">
-                زيارة الموقع
-                <i class="ph-bold ph-arrow-up-right text-lg"></i>
-              </a>
-            </div>
-          </article>
+
+        <h1
+          class="text-4xl md:text-6xl lg:text-7xl font-bold font-heading text-white mb-6 tracking-tight fade-in-up"
+          style="transition-delay: 0.2s"
+        >
+          شركة <span class="text-accent" dir="ltr">SyriaBit</span>
+        </h1>
+
+        <p
+          class="text-xl md:text-2xl text-slate-200 mb-10 font-medium max-w-2xl mx-auto leading-relaxed fade-in-up"
+          style="transition-delay: 0.4s"
+        >
+          للحلول البرمجية. نحن نمكن الشباب لبناء وتطوير قدراتهم التقنية في عالم
+          يتسارع فيه الابتكار.
+        </p>
+
+        <div class="fade-in-up" style="transition-delay: 0.6s">
+          <a
+            href="#projects"
+            class="sweep-hover inline-flex items-center gap-2 bg-transparent border-2 border-accent text-accent font-bold py-4 px-8 rounded-full text-lg transition-all shadow-[0_0_15px_rgba(0,207,255,0.3)]"
+          >
+            تعرف على مشاريعنا
+            <i class="ph flex ph-arrow-down text-xl"></i>
+          </a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Sub-section C - Custom Websites -->
-    <div class="flex w-full max-w-5xl mx-auto flex-col gap-8 fade-in-up" style="transition-delay: 0.2s">
-      <button class="Accordion-Btn w-full flex items-center justify-between p-6 bg-white border border-slate-200 rounded-2xl shadow-sm hover:border-accent hover:shadow-md transition-all group">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-accent group-hover:bg-accent/10 transition-colors">
-            <i class="ph-fill ph-paint-brush-broad text-2xl"></i>
-          </div>
-          <h3 class="text-2xl md:text-3xl font-bold text-primary m-0">مواقع حسب الطلب</h3>
-        </div>
-        <i class="ph-bold ph-caret-down text-slate-400 text-2xl transition-transform duration-300 Accordion-Icon"></i>
-      </button>
-      
-      <div class="Accordion-Content hidden opacity-0 transition-opacity duration-300 flex-col items-center content-center px-4 w-full">
-        <p class="text-slate-600 mb-8 text-lg text-center max-w-2xl mx-auto mt-6">نبني لك ما تحتاجه تمامًا — من الفكرة إلى الإطلاق، موقعك يُصنع خصيصًا لك</p>
-        <article class="w-full max-w-[600px] mx-auto bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl p-8 flex flex-col items-center text-center relative transition-all">
-          <div class="absolute -top-3 bg-amber-500 text-white text-sm font-bold px-4 py-1 rounded-full">
-            غير متوفر حاليًا
-          </div>
-          <i class="ph ph-clock text-[48px] text-amber-500 mb-6 mt-4"></i>
-          <p class="text-slate-500 leading-relaxed text-lg font-medium">
-            هذه الخدمة ستكون متاحة قريبًا. ترقب إطلاقنا الرسمي!
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="bg-slate-50 py-24 px-6 border-t border-slate-100 mt-12">
-    <div class="max-w-4xl mx-auto">
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6 max-w-7xl mx-auto">
       <div class="text-center mb-16 fade-in-up">
-        <h2 class="text-3xl md:text-5xl font-bold font-heading text-primary inline-block relative border-b-4 border-accent pb-2">
-          تواصل معنا
+        <h2
+          class="text-3xl md:text-5xl font-bold font-heading text-primary inline-block relative border-b-4 border-accent pb-2"
+        >
+          مشاريعنا
         </h2>
-        <p class="mt-4 text-slate-600 text-lg">ابنِ فكرتك القادمة معنا، نحن هنا للمساعدة</p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <!-- WhatsApp Business -->
-        <a href="https://wa.me/212773963897" target="_blank" rel="noopener noreferrer" class="fade-in-up bg-white rounded-2xl p-6 lg:p-8 border border-slate-200 flex flex-col items-center justify-center text-center gap-4 lift-hover hover:border-[#25D366] group transition-all shadow-sm hover:shadow-[0_0_20px_rgba(37,211,102,0.15)]">
-          <i class="ph-fill ph-whatsapp-logo text-[48px] text-[#25D366] group-hover:scale-110 transition-transform duration-300"></i>
-          <h4 class="font-bold text-slate-800 text-xl m-0">واتساب الأعمال</h4>
-        </a>
+      <!-- Tab Buttons Grid -->
+      <div
+        class="mb-12 w-full max-w-5xl mx-auto grid grid-cols-3 gap-2 md:gap-6 fade-in-up"
+      >
+        <!-- Store Button -->
+        <button
+          class="tab-btn bg-white border-2 border-slate-200 rounded-xl md:rounded-2xl p-2 py-4 md:p-8 flex flex-col items-center justify-start gap-2 md:gap-4 hover:border-accent hover:shadow-md transition-all relative"
+          data-target="tab-stores"
+        >
+          <div
+            class="w-10 h-10 md:w-16 md:h-16 rounded-full bg-slate-50 flex items-center justify-center text-accent shrink-0"
+          >
+            <i class="ph-fill ph-storefront text-xl md:text-3xl"></i>
+          </div>
+          <h3
+            class="text-[11px] md:text-2xl font-bold text-primary m-0 text-center leading-snug"
+          >
+            متاجر إلكترونية
+          </h3>
+          <i
+            class="ph-bold ph-caret-down text-slate-400 tab-arrow absolute -bottom-4 md:-bottom-5 text-xl md:text-2xl drop-shadow-sm group-[.active-tab]:text-accent"
+          ></i>
+        </button>
 
-        <!-- WhatsApp Channel -->
-        <a href="https://whatsapp.com/channel/0029Vb7bKOWLY6d7CGPwx22s" target="_blank" rel="noopener noreferrer" class="fade-in-up bg-white rounded-2xl p-6 lg:p-8 border border-slate-200 flex flex-col items-center justify-center text-center gap-4 lift-hover hover:border-[#3b82f6] group transition-all shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]" style="transition-delay: 0.1s;">
-          <i class="ph-fill ph-megaphone text-[48px] text-blue-500 group-hover:scale-110 transition-transform duration-300"></i>
-          <h4 class="font-bold text-slate-800 text-xl m-0">قناة واتساب</h4>
-        </a>
+        <!-- API Button -->
+        <button
+          class="tab-btn bg-white border-2 border-slate-200 rounded-xl md:rounded-2xl p-2 py-4 md:p-8 flex flex-col items-center justify-start gap-2 md:gap-4 hover:border-accent hover:shadow-md transition-all relative"
+          data-target="tab-api"
+        >
+          <div
+            class="w-10 h-10 md:w-16 md:h-16 rounded-full bg-slate-50 flex items-center justify-center text-accent shrink-0"
+          >
+            <i class="ph-fill ph-code text-xl md:text-3xl"></i>
+          </div>
+          <h3
+            class="text-[11px] md:text-2xl font-bold text-primary m-0 text-center leading-snug"
+          >
+            API شام كاش
+          </h3>
+          <i
+            class="ph-bold ph-caret-down text-slate-400 tab-arrow absolute -bottom-4 md:-bottom-5 text-xl md:text-2xl drop-shadow-sm group-[.active-tab]:text-accent"
+          ></i>
+        </button>
 
-        <!-- Telegram Channel -->
-        <a href="https://t.me/syriabit" target="_blank" rel="noopener noreferrer" class="fade-in-up bg-white rounded-2xl p-6 lg:p-8 border border-slate-200 flex flex-col items-center justify-center text-center gap-4 lift-hover hover:border-[#2AABEE] group transition-all shadow-sm hover:shadow-[0_0_20px_rgba(42,171,238,0.15)]" style="transition-delay: 0.2s;">
-          <i class="ph-fill ph-telegram-logo text-[48px] text-[#2AABEE] group-hover:scale-110 transition-transform duration-300"></i>
-          <h4 class="font-bold text-slate-800 text-xl m-0">قناة تيليجرام</h4>
-        </a>
-
-        <!-- Email -->
-        <a href="mailto:a7datt@gmail.com" class="fade-in-up bg-white rounded-2xl p-6 lg:p-8 border border-slate-200 flex flex-col items-center justify-center text-center gap-4 lift-hover hover:border-primary group transition-all shadow-sm hover:shadow-[0_0_20px_rgba(13,36,115,0.15)]" style="transition-delay: 0.3s;">
-          <i class="ph-fill ph-envelope-simple text-[48px] text-primary group-hover:scale-110 transition-transform duration-300"></i>
-          <h4 class="font-bold text-slate-800 text-xl m-0">البريد الإلكتروني</h4>
-        </a>
+        <!-- Custom Demand Button -->
+        <button
+          class="tab-btn bg-white border-2 border-slate-200 rounded-xl md:rounded-2xl p-2 py-4 md:p-8 flex flex-col items-center justify-start gap-2 md:gap-4 hover:border-accent hover:shadow-md transition-all w-full relative"
+          data-target="tab-custom"
+        >
+          <div
+            class="w-10 h-10 md:w-16 md:h-16 rounded-full bg-slate-50 flex items-center justify-center text-accent shrink-0"
+          >
+            <i class="ph-fill ph-paint-brush-broad text-xl md:text-3xl"></i>
+          </div>
+          <h3
+            class="text-[11px] md:text-2xl font-bold text-primary m-0 text-center leading-snug"
+          >
+            مواقع حسب الطلب
+          </h3>
+          <i
+            class="ph-bold ph-caret-down text-slate-400 tab-arrow absolute -bottom-4 md:-bottom-5 text-xl md:text-2xl drop-shadow-sm group-[.active-tab]:text-accent"
+          ></i>
+        </button>
       </div>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="bg-primary text-slate-300 py-16 px-6 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 border-b border-indigo-300/20 pb-10 mb-8 relative z-10">
-      <div class="flex items-center gap-5">
-        <img src="https://wsrv.nl/?url=https://i.ibb.co/DfRYz0kf/logo.jpg&output=webp&w=120&q=80" alt="SyriaBit Icon" class="w-12 h-12 object-contain drop-shadow-md rounded-lg" onerror="this.src='https://placehold.co/100x100/00cfff/ffffff?text=SB'">
-        <span class="font-heading font-extrabold text-white text-2xl tracking-wide" dir="ltr">SyriaBit</span>
+      <!-- Tab Contents Container -->
+      <div class="w-full max-w-5xl mx-auto fade-in-up" id="tab-contents">
+        <!-- Store Content -->
+        <div id="tab-stores" class="tab-content hidden animate-fade-in">
+          <p class="text-slate-600 mb-8 text-lg text-center px-4">
+            نصمم ونطور متاجر إلكترونية احترافية وسريعة ومتجاوبة مع جميع الأجهزة
+          </p>
+          <div class="grid grid-cols-3 gap-2 sm:gap-4 lg:gap-8 w-full">
+            <!-- Project 1: VIPro -->
+            <article
+              class="lift-hover cyan-glow browser-mockup flex flex-col transition-all hover:-translate-y-1.5 hover:shadow-[0_0_20px_rgba(0,207,255,0.4)]"
+            >
+              <div class="browser-header">
+                <div class="browser-dot dot-red"></div>
+                <div class="browser-dot dot-yellow"></div>
+                <div class="browser-dot dot-green"></div>
+                <div
+                  class="ml-auto bg-white/50 px-2 py-0.5 rounded text-[8px] md:text-[10px] text-slate-400 font-mono flex-1 mx-2 text-left truncate"
+                  dir="ltr"
+                >
+                  vipro.sy
+                </div>
+              </div>
+              <div
+                class="relative w-full h-16 sm:h-32 md:h-48 bg-slate-100 overflow-hidden border-b border-slate-100"
+              >
+                <img
+                  src="https://api.microlink.io/?url=https://vipro.sy&screenshot=true&meta=false&embed=screenshot.url"
+                  alt="VIPro Website Screenshot"
+                  class="w-full h-full object-cover object-top"
+                  loading="lazy"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/800x600/f8fafc/64748b?text=vipro.sy'
+                  "
+                />
+              </div>
+              <div
+                class="p-2 sm:p-4 md:p-6 bg-white flex flex-col flex-grow items-center text-center"
+              >
+                <h4
+                  class="text-[10px] sm:text-base md:text-xl font-bold text-primary mb-1 md:mb-4 leading-tight"
+                >
+                  VIPro
+                </h4>
+                <a
+                  href="https://vipro.sy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 md:gap-2 text-primary text-[9px] sm:text-sm md:text-base font-bold hover:text-accent transition-colors pt-2 md:pt-4 border-t border-slate-100 w-full justify-center mt-auto"
+                >
+                  زيارة الموقع
+                  <i
+                    class="ph ph-arrow-up-right font-bold text-xs md:text-lg"
+                  ></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- Project 2: Al-Azeaz Store -->
+            <article
+              class="lift-hover cyan-glow browser-mockup flex flex-col transition-all hover:-translate-y-1.5 hover:shadow-[0_0_20px_rgba(0,207,255,0.4)]"
+            >
+              <div class="browser-header">
+                <div class="browser-dot dot-red"></div>
+                <div class="browser-dot dot-yellow"></div>
+                <div class="browser-dot dot-green"></div>
+                <div
+                  class="ml-auto bg-white/50 px-2 py-0.5 rounded text-[8px] md:text-[10px] text-slate-400 font-mono flex-1 mx-2 text-left truncate"
+                  dir="ltr"
+                >
+                  alazeaz-store.sy
+                </div>
+              </div>
+              <div
+                class="relative w-full h-16 sm:h-32 md:h-48 bg-slate-100 overflow-hidden border-b border-slate-100"
+              >
+                <img
+                  src="https://api.microlink.io/?url=https://alazeaz-store.sy&screenshot=true&meta=false&embed=screenshot.url"
+                  alt="Al-Azeaz Store Screenshot"
+                  class="w-full h-full object-cover object-top"
+                  loading="lazy"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/800x600/f8fafc/64748b?text=alazeaz-store.sy'
+                  "
+                />
+              </div>
+              <div
+                class="p-2 sm:p-4 md:p-6 bg-white flex flex-col flex-grow items-center text-center"
+              >
+                <h4
+                  class="text-[10px] sm:text-base md:text-xl font-bold text-primary mb-1 md:mb-4 leading-tight"
+                >
+                  Al-Azeaz Store
+                </h4>
+                <a
+                  href="https://alazeaz-store.sy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 md:gap-2 text-primary text-[9px] sm:text-sm md:text-base font-bold hover:text-accent transition-colors pt-2 md:pt-4 border-t border-slate-100 w-full justify-center mt-auto"
+                >
+                  زيارة الموقع
+                  <i
+                    class="ph ph-arrow-up-right font-bold text-xs md:text-lg"
+                  ></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- Project 3: CodeLink Store -->
+            <article
+              class="lift-hover cyan-glow browser-mockup flex flex-col transition-all hover:-translate-y-1.5 hover:shadow-[0_0_20px_rgba(0,207,255,0.4)]"
+            >
+              <div class="browser-header">
+                <div class="browser-dot dot-red"></div>
+                <div class="browser-dot dot-yellow"></div>
+                <div class="browser-dot dot-green"></div>
+                <div
+                  class="ml-auto bg-white/50 px-2 py-0.5 rounded text-[8px] md:text-[10px] text-slate-400 font-mono flex-1 mx-2 text-left truncate"
+                  dir="ltr"
+                >
+                  codelink-store.com
+                </div>
+              </div>
+              <div
+                class="relative w-full h-16 sm:h-32 md:h-48 bg-slate-100 overflow-hidden border-b border-slate-100"
+              >
+                <img
+                  src="https://api.microlink.io/?url=https://codelink-store.com&screenshot=true&meta=false&embed=screenshot.url"
+                  alt="CodeLink Store Screenshot"
+                  class="w-full h-full object-cover object-top"
+                  loading="lazy"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/800x600/f8fafc/64748b?text=codelink-store.com'
+                  "
+                />
+              </div>
+              <div
+                class="p-2 sm:p-4 md:p-6 bg-white flex flex-col flex-grow items-center text-center"
+              >
+                <h4
+                  class="text-[10px] sm:text-base md:text-xl font-bold text-primary mb-1 md:mb-4 leading-tight"
+                >
+                  CodeLink Store
+                </h4>
+                <a
+                  href="https://codelink-store.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 md:gap-2 text-primary text-[9px] sm:text-sm md:text-base font-bold hover:text-accent transition-colors pt-2 md:pt-4 border-t border-slate-100 w-full justify-center mt-auto"
+                >
+                  زيارة الموقع
+                  <i
+                    class="ph ph-arrow-up-right font-bold text-xs md:text-lg"
+                  ></i>
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Order Button -->
+          <div
+            class="mt-8 pt-8 border-t border-slate-200 flex justify-center w-full fade-in-up"
+            style="transition-delay: 0.3s"
+          >
+            <a
+              href="store-details.html"
+              class="flex items-center gap-3 bg-accent hover:bg-cyan-400 text-slate-900 font-bold px-8 py-4 rounded-xl transition-all shadow-[0_4px_20px_rgba(0,207,255,0.3)] hover:shadow-[0_6px_25px_rgba(0,207,255,0.5)] transform hover:-translate-y-1 text-lg"
+            >
+              اطلب متجرك الآن
+              <i class="ph-bold ph-storefront text-2xl"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- API Content -->
+        <div
+          id="tab-api"
+          class="tab-content hidden animate-fade-in flex-col items-center content-center px-4 w-full"
+        >
+          <p class="text-slate-600 mb-8 text-lg text-center max-w-2xl mx-auto">
+            نوفر تكاملاً كاملاً مع بوابة الدفع شام كاش لربطها بمشاريعك ومتاجرك
+            الإلكترونية بكل سهولة ومرونة
+          </p>
+          <div class="w-full max-w-[450px] mx-auto">
+            <article
+              class="lift-hover cyan-glow browser-mockup flex flex-col transition-all hover:-translate-y-1.5 hover:shadow-[0_0_20px_rgba(0,207,255,0.4)]"
+            >
+              <div class="browser-header">
+                <div class="browser-dot dot-red"></div>
+                <div class="browser-dot dot-yellow"></div>
+                <div class="browser-dot dot-green"></div>
+                <div
+                  class="ml-auto bg-white/50 px-2 py-0.5 rounded text-[10px] text-slate-400 font-mono flex-1 mx-2 text-left truncate"
+                  dir="ltr"
+                >
+                  apis.sy
+                </div>
+              </div>
+              <div
+                class="relative w-full h-56 bg-slate-100 overflow-hidden border-b border-slate-100"
+              >
+                <img
+                  src="https://api.microlink.io/?url=https://apis.sy&screenshot=true&meta=false&embed=screenshot.url"
+                  alt="APIs.sy Screenshot"
+                  class="w-full h-full object-cover object-top"
+                  loading="lazy"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/800x600/f8fafc/64748b?text=apis.sy'
+                  "
+                />
+              </div>
+              <div
+                class="p-6 bg-white flex flex-col flex-grow items-center text-center"
+              >
+                <h4 class="text-xl font-bold text-primary mb-4" dir="ltr">
+                  APIs.sy
+                </h4>
+                <a
+                  href="https://apis.sy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 md:gap-2 text-primary font-bold hover:text-accent transition-colors pt-4 border-t border-slate-100 w-full justify-center mt-auto"
+                >
+                  زيارة الموقع
+                  <i class="ph-bold ph-arrow-up-right text-lg"></i>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Custom Websites Content -->
+        <div
+          id="tab-custom"
+          class="tab-content hidden animate-fade-in flex-col items-center content-center px-4 w-full"
+        >
+          <p class="text-slate-600 mb-8 text-lg text-center max-w-2xl mx-auto">
+            نبني لك ما تحتاجه تمامًا — من الفكرة إلى الإطلاق، موقعك يُصنع خصيصًا
+            لك
+          </p>
+          <article
+            class="w-full max-w-[600px] mx-auto bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl p-8 flex flex-col items-center text-center relative transition-all"
+          >
+            <div
+              class="absolute -top-3 bg-amber-500 text-white text-sm font-bold px-4 py-1 rounded-full"
+            >
+              غير متوفر حاليًا
+            </div>
+            <i class="ph ph-clock text-[48px] text-amber-500 mb-6 mt-4"></i>
+            <p class="text-slate-500 leading-relaxed text-lg font-medium">
+              هذه الخدمة ستكون متاحة قريبًا. ترقب إطلاقنا الرسمي!
+            </p>
+          </article>
+        </div>
       </div>
-    </div>
-    <div class="text-center font-medium flex flex-col md:flex-row justify-center items-center gap-2 relative z-10 text-indigo-200">
-      <p>جميع الحقوق محفوظة &copy; <span id="year"></span> SyriaBit للحلول البرمجية.</p>
-    </div>
-  </footer>
+    </section>
 
-  <script>
-    // Initialize Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      class="bg-slate-50 py-24 px-6 border-t border-slate-100 mt-12"
+    >
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16 fade-in-up">
+          <h2
+            class="text-3xl md:text-5xl font-bold font-heading text-primary inline-block relative border-b-4 border-accent pb-2"
+          >
+            تواصل معنا
+          </h2>
+          <p class="mt-4 text-slate-600 text-lg">
+            ابنِ فكرتك القادمة معنا، نحن هنا للمساعدة
+          </p>
+        </div>
 
-    // Accordion Logic
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.Accordion-Btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const content = btn.nextElementSibling;
-          const icon = btn.querySelector('.Accordion-Icon');
-          const isOpen = !content.classList.contains('hidden');
-          
-          if (isOpen) {
-            content.classList.remove('opacity-100');
-            content.classList.add('opacity-0');
-            icon.classList.remove('rotate-180');
-            setTimeout(() => {
-              content.classList.add('hidden');
-              content.classList.remove('flex');
-            }, 300);
-          } else {
-            content.classList.remove('hidden');
-            // If it's a flex container, ensure it has flex
-            if (content.classList.contains('flex-col')) {
-               content.classList.add('flex');
-            }
-            
-            setTimeout(() => {
-              content.classList.remove('opacity-0');
-              content.classList.add('opacity-100');
-              icon.classList.add('rotate-180');
-            }, 10);
-            
-            // Re-trigger scroll observer for child items
-            const elements = content.querySelectorAll('.fade-in-up:not(.visible)');
-            elements.forEach((el, index) => {
-              setTimeout(() => el.classList.add('visible'), index * 100);
+        <div class="grid grid-cols-2 gap-3 sm:gap-6">
+          <!-- WhatsApp Business -->
+          <a
+            href="https://wa.me/212773963897"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="fade-in-up bg-white rounded-2xl p-4 md:p-6 lg:p-8 border border-slate-200 flex flex-col items-center justify-center text-center gap-2 md:gap-4 lift-hover hover:border-[#25D366] group transition-all shadow-sm hover:shadow-[0_0_20px_rgba(37,211,102,0.15)]"
+          >
+            <i
+              class="ph-fill ph-whatsapp-logo text-4xl md:text-[48px] text-[#25D366] group-hover:scale-110 transition-transform duration-300"
+            ></i>
+            <h4
+              class="font-bold text-slate-800 text-sm sm:text-lg md:text-xl m-0"
+            >
+              واتساب الأعمال
+            </h4>
+          </a>
+
+          <!-- WhatsApp Channel -->
+          <a
+            href="https://whatsapp.com/channel/0029Vb7bKOWLY6d7CGPwx22s"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="fade-in-up bg-white rounded-2xl p-4 md:p-6 lg:p-8 border border-slate-200 flex flex-col items-center justify-center text-center gap-2 md:gap-4 lift-hover hover:border-[#3b82f6] group transition-all shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]"
+            style="transition-delay: 0.1s"
+          >
+            <i
+              class="ph-fill ph-megaphone text-4xl md:text-[48px] text-blue-500 group-hover:scale-110 transition-transform duration-300"
+            ></i>
+            <h4
+              class="font-bold text-slate-800 text-sm sm:text-lg md:text-xl m-0"
+            >
+              قناة واتساب
+            </h4>
+          </a>
+
+          <!-- Telegram Channel -->
+          <a
+            href="https://t.me/syriabit"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="fade-in-up bg-white rounded-2xl p-4 md:p-6 lg:p-8 border border-slate-200 flex flex-col items-center justify-center text-center gap-2 md:gap-4 lift-hover hover:border-[#2AABEE] group transition-all shadow-sm hover:shadow-[0_0_20px_rgba(42,171,238,0.15)]"
+            style="transition-delay: 0.2s"
+          >
+            <i
+              class="ph-fill ph-telegram-logo text-4xl md:text-[48px] text-[#2AABEE] group-hover:scale-110 transition-transform duration-300"
+            ></i>
+            <h4
+              class="font-bold text-slate-800 text-sm sm:text-lg md:text-xl m-0"
+            >
+              قناة تيليجرام
+            </h4>
+          </a>
+
+          <!-- Email -->
+          <a
+            href="mailto:a7datt@gmail.com"
+            class="fade-in-up bg-white rounded-2xl p-4 md:p-6 lg:p-8 border border-slate-200 flex flex-col items-center justify-center text-center gap-2 md:gap-4 lift-hover hover:border-primary group transition-all shadow-sm hover:shadow-[0_0_20px_rgba(13,36,115,0.15)]"
+            style="transition-delay: 0.3s"
+          >
+            <i
+              class="ph-fill ph-envelope-simple text-4xl md:text-[48px] text-primary group-hover:scale-110 transition-transform duration-300"
+            ></i>
+            <h4
+              class="font-bold text-slate-800 text-sm sm:text-lg md:text-xl m-0"
+            >
+              البريد الإلكتروني
+            </h4>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="bg-primary text-slate-300 py-16 px-6 relative overflow-hidden"
+    >
+      <div
+        class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 border-b border-indigo-300/20 pb-10 mb-8 relative z-10"
+      >
+        <div class="flex items-center gap-5">
+          <img
+            src="https://wsrv.nl/?url=https://i.ibb.co/BV8McBZF/IMG-20260520-202629-970.webp&output=webp&w=120&q=80"
+            alt="SyriaBit Icon"
+            class="w-12 h-12 object-contain drop-shadow-md rounded-lg"
+            onerror="
+              this.src = 'https://placehold.co/100x100/00cfff/ffffff?text=SB'
+            "
+          />
+          <span
+            class="font-heading font-extrabold text-white text-2xl tracking-wide"
+            dir="ltr"
+            >SyriaBit</span
+          >
+        </div>
+      </div>
+      <div
+        class="text-center font-medium flex flex-col md:flex-row justify-center items-center gap-2 relative z-10 text-indigo-200"
+      >
+        <p>
+          جميع الحقوق محفوظة &copy; <span id="year"></span> SyriaBit للحلول
+          البرمجية.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize Year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Tabs Logic
+      document.addEventListener("DOMContentLoaded", () => {
+        const tabBtns = document.querySelectorAll(".tab-btn");
+        const tabContents = document.querySelectorAll(".tab-content");
+
+        tabBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const isAlreadyActive = btn.classList.contains("active-tab");
+
+            // Remove active styles from all buttons
+            tabBtns.forEach((b) => {
+              b.classList.remove("active-tab", "border-accent", "shadow-md");
             });
-          }
+
+            // Hide all contents
+            tabContents.forEach((content) => {
+              content.classList.add("hidden");
+              content.classList.remove("flex", "block");
+            });
+
+            if (!isAlreadyActive) {
+              // Add active style to the clicked button
+              btn.classList.add("active-tab", "border-accent", "shadow-md");
+
+              // Show target content
+              const targetId = btn.getAttribute("data-target");
+              const targetContent = document.getElementById(targetId);
+              if (targetContent) {
+                targetContent.classList.remove("hidden");
+                if (targetContent.classList.contains("flex-col")) {
+                  targetContent.classList.add("flex");
+                } else {
+                  targetContent.classList.add("block");
+                }
+
+                // Trigger animation
+                targetContent.style.animation = "none";
+                targetContent.offsetHeight; /* trigger reflow */
+                targetContent.style.animation = null;
+
+                // Keep target content in view smoothly
+                setTimeout(() => {
+                  const y =
+                    targetContent.getBoundingClientRect().top +
+                    window.scrollY -
+                    100;
+                  window.scrollTo({ top: y, behavior: "smooth" });
+                }, 100);
+              }
+            }
+          });
         });
       });
-    });
 
-    // Intersection Observer for graceful scroll animations
-    document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver((entries, observerInstance) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observerInstance.unobserve(entry.target);
-          }
-        });
-      }, {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15
+      // Intersection Observer for graceful scroll animations
+      document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver(
+          (entries, observerInstance) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observerInstance.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.15,
+          },
+        );
+
+        const revealElements = document.querySelectorAll(".fade-in-up");
+        revealElements.forEach((el) => observer.observe(el));
       });
 
-      const revealElements = document.querySelectorAll('.fade-in-up');
-      revealElements.forEach(el => observer.observe(el));
-    });
-
-    // Scroll Progress Bar Logic
-    document.addEventListener('scroll', () => {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      document.getElementById('scroll-progress').style.height = scrolled + '%';
-    });
-  </script>
-</body>
+      // Scroll Progress Bar Logic
+      document.addEventListener("scroll", () => {
+        const winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("scroll-progress").style.height =
+          scrolled + "%";
+      });
+    </script>
+  </body>
 </html>
