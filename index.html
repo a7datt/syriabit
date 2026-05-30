@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SyriaBit</title>
+    <title>SyraBit</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -225,6 +225,25 @@
       .cyan-glow:hover {
         box-shadow: 0 0 20px rgba(0, 207, 255, 0.4);
       }
+
+      @keyframes inputShake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        20%,
+        60% {
+          transform: translateX(-5px);
+        }
+        40%,
+        80% {
+          transform: translateX(5px);
+        }
+      }
+      .input-error {
+        animation: inputShake 0.4s ease-in-out;
+        border-color: #ef4444 !important; /* Tailwind text-red-500 */
+      }
     </style>
   </head>
   <body class="bg-light antialiased text-slate-800">
@@ -253,12 +272,12 @@
           ></div>
           <img
             src="https://wsrv.nl/?url=https://i.ibb.co/BV8McBZF/IMG-20260520-202629-970.webp&output=webp&w=400&q=85"
-            alt="SyriaBit Logo"
+            alt="SyraBit Logo"
             class="relative max-w-[220px] md:max-w-[280px] object-contain drop-shadow-2xl rounded-2xl"
             fetchpriority="high"
             onerror="
               this.src =
-                'https://placehold.co/400x400/0d2473/ffffff?text=SyriaBit'
+                'https://placehold.co/400x400/0d2473/ffffff?text=SyraBit'
             "
           />
         </div>
@@ -267,7 +286,7 @@
           class="text-4xl md:text-6xl lg:text-7xl font-bold font-heading text-white mb-6 tracking-tight fade-in-up"
           style="transition-delay: 0.2s"
         >
-          شركة <span class="text-accent" dir="ltr">SyriaBit</span>
+          شركة <span class="text-accent" dir="ltr">SyraBit</span>
         </h1>
 
         <p
@@ -302,7 +321,7 @@
 
       <!-- Tab Buttons Grid -->
       <div
-        class="mb-12 w-full max-w-5xl mx-auto grid grid-cols-3 gap-2 md:gap-6 fade-in-up"
+        class="mb-12 w-full max-w-5xl mx-auto grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6 fade-in-up"
       >
         <!-- Store Button -->
         <button
@@ -358,6 +377,66 @@
             class="text-[11px] md:text-2xl font-bold text-primary m-0 text-center leading-snug"
           >
             مواقع حسب الطلب
+          </h3>
+          <i
+            class="ph-bold ph-caret-down text-slate-400 tab-arrow absolute -bottom-4 md:-bottom-5 text-xl md:text-2xl drop-shadow-sm group-[.active-tab]:text-accent"
+          ></i>
+        </button>
+
+        <!-- Restaurant Menu Button -->
+        <button
+          class="tab-btn bg-white border-2 border-slate-200 rounded-xl md:rounded-2xl p-2 py-4 md:p-8 flex flex-col items-center justify-start gap-2 md:gap-4 hover:border-accent hover:shadow-md transition-all w-full relative"
+          data-target="tab-restaurant"
+        >
+          <div
+            class="w-10 h-10 md:w-16 md:h-16 rounded-full bg-slate-50 flex items-center justify-center text-accent shrink-0"
+          >
+            <i class="ph-fill ph-fork-knife text-xl md:text-3xl"></i>
+          </div>
+          <h3
+            class="text-[11px] md:text-2xl font-bold text-primary m-0 text-center leading-snug"
+          >
+            منيو مطاعم
+          </h3>
+          <i
+            class="ph-bold ph-caret-down text-slate-400 tab-arrow absolute -bottom-4 md:-bottom-5 text-xl md:text-2xl drop-shadow-sm group-[.active-tab]:text-accent"
+          ></i>
+        </button>
+
+        <!-- Individuals & Companies Websites Button -->
+        <button
+          class="tab-btn bg-white border-2 border-slate-200 rounded-xl md:rounded-2xl p-2 py-4 md:p-8 flex flex-col items-center justify-start gap-2 md:gap-4 hover:border-accent hover:shadow-md transition-all w-full relative"
+          data-target="tab-websites"
+        >
+          <div
+            class="w-10 h-10 md:w-16 md:h-16 rounded-full bg-slate-50 flex items-center justify-center text-accent shrink-0"
+          >
+            <i class="ph-fill ph-buildings text-xl md:text-3xl"></i>
+          </div>
+          <h3
+            class="text-[11px] md:text-2xl font-bold text-primary m-0 text-center leading-snug"
+          >
+            مواقع للأفراد والشركات
+          </h3>
+          <i
+            class="ph-bold ph-caret-down text-slate-400 tab-arrow absolute -bottom-4 md:-bottom-5 text-xl md:text-2xl drop-shadow-sm group-[.active-tab]:text-accent"
+          ></i>
+        </button>
+
+        <!-- Cashier Plus Button -->
+        <button
+          class="tab-btn bg-white border-2 border-slate-200 rounded-xl md:rounded-2xl p-2 py-4 md:p-8 flex flex-col items-center justify-start gap-2 md:gap-4 hover:border-accent hover:shadow-md transition-all w-full relative"
+          data-target="tab-cashier"
+        >
+          <div
+            class="w-10 h-10 md:w-16 md:h-16 rounded-full bg-slate-50 flex items-center justify-center text-accent shrink-0"
+          >
+            <i class="ph-fill ph-calculator text-xl md:text-3xl"></i>
+          </div>
+          <h3
+            class="text-[11px] md:text-2xl font-bold text-primary m-0 text-center leading-snug"
+          >
+            الكاشير بلس
           </h3>
           <i
             class="ph-bold ph-caret-down text-slate-400 tab-arrow absolute -bottom-4 md:-bottom-5 text-xl md:text-2xl drop-shadow-sm group-[.active-tab]:text-accent"
@@ -533,7 +612,7 @@
             style="transition-delay: 0.3s"
           >
             <a
-              href="store-details.html"
+              href="./store-details.html"
               class="flex items-center gap-3 bg-accent hover:bg-cyan-400 text-slate-900 font-bold px-8 py-4 rounded-xl transition-all shadow-[0_4px_20px_rgba(0,207,255,0.3)] hover:shadow-[0_6px_25px_rgba(0,207,255,0.5)] transform hover:-translate-y-1 text-lg"
             >
               اطلب متجرك الآن
@@ -605,23 +684,149 @@
           id="tab-custom"
           class="tab-content hidden animate-fade-in flex-col items-center content-center px-4 w-full"
         >
-          <p class="text-slate-600 mb-8 text-lg text-center max-w-2xl mx-auto">
-            نبني لك ما تحتاجه تمامًا — من الفكرة إلى الإطلاق، موقعك يُصنع خصيصًا
-            لك
-          </p>
-          <article
-            class="w-full max-w-[600px] mx-auto bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl p-8 flex flex-col items-center text-center relative transition-all"
+          <div class="mb-8 text-center max-w-2xl mx-auto">
+            <p class="text-slate-600 mb-2 text-lg">
+              نبني لك ما تحتاجه تمامًا — من الفكرة إلى الإطلاق، موقعك يُصنع
+              خصيصًا لك
+            </p>
+            <p class="text-sm text-slate-500">
+              قم بتعبئة النموذج أدناه لتزويدنا بتفاصيل موقعك وسنتواصل معك بأقرب
+              وقت للمناقشة.
+            </p>
+          </div>
+
+          <div
+            class="w-full max-w-2xl mx-auto bg-white border border-slate-200 shadow-sm rounded-2xl p-6 sm:p-8 text-right"
+          >
+            <form id="custom-website-form" class="space-y-6">
+              <div>
+                <label
+                  for="custom-site-name"
+                  class="block text-sm font-bold text-slate-700 mb-2"
+                  >اسم موقعك أو مشروعك:</label
+                >
+                <input
+                  type="text"
+                  id="custom-site-name"
+                  required
+                  placeholder="مثال: شركة سيرا بت"
+                  class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent outline-none font-sans transition-all"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="custom-site-service"
+                  class="block text-sm font-bold text-slate-700 mb-2"
+                  >ما هي خدمتك؟</label
+                >
+                <input
+                  type="text"
+                  id="custom-site-service"
+                  required
+                  placeholder="مثال: مطعم، كافيه، معرض، موقع شخصي، عيادة..."
+                  class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent outline-none font-sans transition-all"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="custom-site-desc"
+                  class="block text-sm font-bold text-slate-700 mb-2"
+                  >صف موقعك (الميزات والأقسام التي تريدها):</label
+                >
+                <textarea
+                  id="custom-site-desc"
+                  required
+                  maxlength="1000"
+                  rows="5"
+                  placeholder="اكتب هنا كافة التفاصيل والصفحات التي ترغب بها (من طلبات، حجوزات، أو واجهات عرض)..."
+                  class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent outline-none font-sans transition-all resize-y"
+                ></textarea>
+                <p
+                  class="text-xs text-slate-500 mt-2 text-left"
+                  id="word-count"
+                >
+                  0 / 1000 حرف
+                </p>
+              </div>
+
+              <button
+                type="button"
+                id="custom-site-submit"
+                class="w-full inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold px-8 py-4 rounded-xl transition-all shadow-[0_4px_15px_rgba(37,211,102,0.2)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.4)] transform hover:-translate-y-1 text-lg mt-4"
+              >
+                <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
+                إرسال الطلب عبر واتساب
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Restaurant Menu Content -->
+        <div
+          id="tab-restaurant"
+          class="tab-content hidden animate-fade-in flex-col items-center content-center px-4 w-full"
+        >
+          <div
+            class="w-full max-w-2xl mx-auto bg-slate-50 border border-slate-200 rounded-2xl p-8 sm:p-12 text-center shadow-sm"
           >
             <div
-              class="absolute -top-3 bg-amber-500 text-white text-sm font-bold px-4 py-1 rounded-full"
+              class="w-16 h-16 bg-slate-200 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-500"
             >
-              غير متوفر حاليًا
+              <i class="ph-fill ph-fork-knife text-3xl"></i>
             </div>
-            <i class="ph ph-clock text-[48px] text-amber-500 mb-6 mt-4"></i>
-            <p class="text-slate-500 leading-relaxed text-lg font-medium">
-              هذه الخدمة ستكون متاحة قريبًا. ترقب إطلاقنا الرسمي!
+            <h3 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+              منيو مطاعم
+            </h3>
+            <p class="text-slate-600 text-lg">
+              عذراً، هذا المشروع غير متوفر حالياً.
             </p>
-          </article>
+          </div>
+        </div>
+
+        <!-- Websites Content -->
+        <div
+          id="tab-websites"
+          class="tab-content hidden animate-fade-in flex-col items-center content-center px-4 w-full"
+        >
+          <div
+            class="w-full max-w-2xl mx-auto bg-slate-50 border border-slate-200 rounded-2xl p-8 sm:p-12 text-center shadow-sm"
+          >
+            <div
+              class="w-16 h-16 bg-slate-200 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-500"
+            >
+              <i class="ph-fill ph-buildings text-3xl"></i>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+              مواقع للأفراد والشركات
+            </h3>
+            <p class="text-slate-600 text-lg">
+              عذراً، هذا المشروع غير متوفر حالياً.
+            </p>
+          </div>
+        </div>
+
+        <!-- Cashier Plus Content -->
+        <div
+          id="tab-cashier"
+          class="tab-content hidden animate-fade-in flex-col items-center content-center px-4 w-full"
+        >
+          <div
+            class="w-full max-w-2xl mx-auto bg-slate-50 border border-slate-200 rounded-2xl p-8 sm:p-12 text-center shadow-sm"
+          >
+            <div
+              class="w-16 h-16 bg-slate-200 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-500"
+            >
+              <i class="ph-fill ph-calculator text-3xl"></i>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+              الكاشير بلس
+            </h3>
+            <p class="text-slate-600 text-lg">
+              عذراً، هذا المشروع غير متوفر حالياً.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -681,7 +886,7 @@
 
           <!-- Telegram Channel -->
           <a
-            href="https://t.me/syriabit"
+            href="https://t.me/syrabit"
             target="_blank"
             rel="noopener noreferrer"
             class="fade-in-up bg-white rounded-2xl p-4 md:p-6 lg:p-8 border border-slate-200 flex flex-col items-center justify-center text-center gap-2 md:gap-4 lift-hover hover:border-[#2AABEE] group transition-all shadow-sm hover:shadow-[0_0_20px_rgba(42,171,238,0.15)]"
@@ -726,7 +931,7 @@
         <div class="flex items-center gap-5">
           <img
             src="https://wsrv.nl/?url=https://i.ibb.co/BV8McBZF/IMG-20260520-202629-970.webp&output=webp&w=120&q=80"
-            alt="SyriaBit Icon"
+            alt="SyraBit Icon"
             class="w-12 h-12 object-contain drop-shadow-md rounded-lg"
             onerror="
               this.src = 'https://placehold.co/100x100/00cfff/ffffff?text=SB'
@@ -735,7 +940,7 @@
           <span
             class="font-heading font-extrabold text-white text-2xl tracking-wide"
             dir="ltr"
-            >SyriaBit</span
+            >SyraBit</span
           >
         </div>
       </div>
@@ -743,7 +948,7 @@
         class="text-center font-medium flex flex-col md:flex-row justify-center items-center gap-2 relative z-10 text-indigo-200"
       >
         <p>
-          جميع الحقوق محفوظة &copy; <span id="year"></span> SyriaBit للحلول
+          جميع الحقوق محفوظة &copy; <span id="year"></span> SyraBit للحلول
           البرمجية.
         </p>
       </div>
@@ -839,6 +1044,116 @@
         const scrolled = (winScroll / height) * 100;
         document.getElementById("scroll-progress").style.height =
           scrolled + "%";
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Word count and custom form submission logic
+        const descTextarea = document.getElementById("custom-site-desc");
+        const wordCountDisplay = document.getElementById("word-count");
+
+        if (descTextarea && wordCountDisplay) {
+          descTextarea.addEventListener("input", function () {
+            const text = this.value;
+            if (text.length > 1000) {
+              // limit to 1000
+              this.value = text.slice(0, 1000);
+              wordCountDisplay.textContent = "1000 / 1000 حرف (الحد الأقصى)";
+              wordCountDisplay.classList.add("text-red-500");
+            } else {
+              wordCountDisplay.textContent = text.length + " / 1000 حرف";
+              wordCountDisplay.classList.remove("text-red-500");
+            }
+          });
+
+          // Clear error state on input
+          const inputs = [
+            document.getElementById("custom-site-name"),
+            document.getElementById("custom-site-service"),
+            descTextarea,
+          ];
+
+          inputs.forEach((input) => {
+            if (input) {
+              input.addEventListener("input", function () {
+                this.classList.remove("input-error");
+              });
+            }
+          });
+
+          // Submit logic
+          document
+            .getElementById("custom-site-submit")
+            .addEventListener("click", function () {
+              const nameInput = document.getElementById("custom-site-name");
+              const serviceInput = document.getElementById(
+                "custom-site-service",
+              );
+              const descInput = document.getElementById("custom-site-desc");
+
+              const siteName = nameInput.value.trim();
+              const siteService = serviceInput.value.trim();
+              const siteDesc = descInput.value.trim();
+
+              let hasError = false;
+
+              // Reset error states first
+              const elements = [nameInput, serviceInput, descInput];
+              elements.forEach((el) => {
+                el.classList.remove("input-error");
+              });
+
+              // Force reflow to allow animation to restart
+              void nameInput.offsetWidth;
+
+              // Add error states if empty
+              if (!siteName) {
+                nameInput.classList.add("input-error");
+                hasError = true;
+              }
+              if (!siteService) {
+                serviceInput.classList.add("input-error");
+                hasError = true;
+              }
+              if (!siteDesc) {
+                descInput.classList.add("input-error");
+                hasError = true;
+              }
+
+              if (hasError) {
+                return;
+              }
+
+              let message =
+                "أهلاً بك، أود طلب موقع إلكتروني خاص بهذه المواصفات:\n\n";
+              message += "📌 اسم الموقع: " + siteName + "\n";
+              message += "💼 نوع الخدمة: " + siteService + "\n";
+              message += "📝 تفاصيل الموقع المطلوبة:\n" + siteDesc + "\n\n";
+              message +=
+                "أرجو التواصل معي للبدء بالعمل ومناقشة التكلفة، وشكراً لكم.";
+
+              const encodedMessage = encodeURIComponent(message);
+              window.open(
+                "https://wa.me/212773963897?text=" + encodedMessage,
+                "_blank",
+              );
+
+              const btn = document.getElementById("custom-site-submit");
+              if (btn) {
+                const originalContent = btn.innerHTML;
+                const originalClasses = btn.className;
+
+                btn.innerHTML =
+                  '<i class="ph-bold ph-check text-2xl"></i> تم تجهيز الطلب!';
+                btn.className =
+                  "w-full inline-flex items-center justify-center gap-3 bg-emerald-500 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(16,185,129,0.6)] transform scale-105 text-lg mt-4";
+
+                setTimeout(() => {
+                  btn.innerHTML = originalContent;
+                  btn.className = originalClasses;
+                }, 3000);
+              }
+            });
+        }
       });
     </script>
   </body>
