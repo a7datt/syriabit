@@ -173,6 +173,15 @@
       .animate-fade-in {
         animation: fadeIn 0.4s ease forwards;
       }
+      .active-service {
+        border-color: #00cfff !important;
+        background-color: rgba(0, 207, 255, 0.04) !important;
+        box-shadow: 0 10px 25px -5px rgba(0, 207, 255, 0.15) !important;
+        transform: translateY(-4px);
+      }
+      .active-service i {
+        color: #00cfff !important;
+      }
       .tab-btn.active-tab {
         background-color: #f8fafc;
       }
@@ -425,7 +434,7 @@
 
       <!-- Tab Buttons Grid -->
       <div
-        class="mb-12 w-full max-w-5xl mx-auto grid grid-cols-3 gap-2 md:gap-6 fade-in-up"
+        class="mb-12 w-full max-w-5xl mx-auto grid grid-cols-3 md:grid-cols-4 gap-2 md:gap-6 fade-in-up"
       >
         <!-- Store Button -->
         <button
@@ -442,9 +451,6 @@
           >
             متاجر إلكترونية
           </h3>
-          <i
-            class="ph-bold ph-caret-down text-slate-400 tab-arrow absolute -bottom-4 md:-bottom-5 text-xl md:text-2xl drop-shadow-sm group-[.active-tab]:text-accent"
-          ></i>
         </button>
 
         <!-- API Button -->
@@ -462,9 +468,6 @@
           >
             API شام كاش
           </h3>
-          <i
-            class="ph-bold ph-caret-down text-slate-400 tab-arrow absolute -bottom-4 md:-bottom-5 text-xl md:text-2xl drop-shadow-sm group-[.active-tab]:text-accent"
-          ></i>
         </button>
 
         <!-- Custom Demand Button -->
@@ -482,9 +485,6 @@
           >
             مواقع حسب الطلب
           </h3>
-          <i
-            class="ph-bold ph-caret-down text-slate-400 tab-arrow absolute -bottom-4 md:-bottom-5 text-xl md:text-2xl drop-shadow-sm group-[.active-tab]:text-accent"
-          ></i>
         </button>
 
         <!-- Restaurant Menu Button -->
@@ -502,9 +502,6 @@
           >
             منيو مطاعم
           </h3>
-          <i
-            class="ph-bold ph-caret-down text-slate-400 tab-arrow absolute -bottom-4 md:-bottom-5 text-xl md:text-2xl drop-shadow-sm group-[.active-tab]:text-accent"
-          ></i>
         </button>
 
         <!-- Individuals & Companies Websites Button -->
@@ -522,9 +519,6 @@
           >
             مواقع للأفراد والشركات
           </h3>
-          <i
-            class="ph-bold ph-caret-down text-slate-400 tab-arrow absolute -bottom-4 md:-bottom-5 text-xl md:text-2xl drop-shadow-sm group-[.active-tab]:text-accent"
-          ></i>
         </button>
 
         <!-- Cashier Plus Button -->
@@ -542,9 +536,23 @@
           >
             الكاشير بلس
           </h3>
-          <i
-            class="ph-bold ph-caret-down text-slate-400 tab-arrow absolute -bottom-4 md:-bottom-5 text-xl md:text-2xl drop-shadow-sm group-[.active-tab]:text-accent"
-          ></i>
+        </button>
+
+        <!-- QR Code Button -->
+        <button
+          class="tab-btn bg-white border-2 border-slate-200 rounded-xl md:rounded-2xl p-2 py-4 md:p-8 flex flex-col items-center justify-start gap-2 md:gap-4 hover:border-accent hover:shadow-md transition-all w-full relative"
+          data-target="tab-qr"
+        >
+          <div
+            class="w-10 h-10 md:w-16 md:h-16 rounded-full bg-slate-50 flex items-center justify-center text-accent shrink-0"
+          >
+            <i class="ph-fill ph-qr-code text-xl md:text-3xl"></i>
+          </div>
+          <h3
+            class="text-[11px] md:text-2xl font-bold text-primary m-0 text-center leading-snug"
+          >
+            مشروع الـ QR والـ NFC الذكي
+          </h3>
         </button>
       </div>
 
@@ -600,9 +608,6 @@
                   class="inline-flex items-center gap-1 md:gap-2 text-primary text-[9px] sm:text-sm md:text-base font-bold hover:text-accent transition-colors pt-2 md:pt-4 border-t border-slate-100 w-full justify-center mt-auto"
                 >
                   زيارة الموقع
-                  <i
-                    class="ph ph-arrow-up-right font-bold text-xs md:text-lg"
-                  ></i>
                 </a>
               </div>
             </article>
@@ -651,9 +656,6 @@
                   class="inline-flex items-center gap-1 md:gap-2 text-primary text-[9px] sm:text-sm md:text-base font-bold hover:text-accent transition-colors pt-2 md:pt-4 border-t border-slate-100 w-full justify-center mt-auto"
                 >
                   زيارة الموقع
-                  <i
-                    class="ph ph-arrow-up-right font-bold text-xs md:text-lg"
-                  ></i>
                 </a>
               </div>
             </article>
@@ -702,9 +704,6 @@
                   class="inline-flex items-center gap-1 md:gap-2 text-primary text-[9px] sm:text-sm md:text-base font-bold hover:text-accent transition-colors pt-2 md:pt-4 border-t border-slate-100 w-full justify-center mt-auto"
                 >
                   زيارة الموقع
-                  <i
-                    class="ph ph-arrow-up-right font-bold text-xs md:text-lg"
-                  ></i>
                 </a>
               </div>
             </article>
@@ -753,9 +752,6 @@
                   class="inline-flex items-center gap-1 md:gap-2 text-primary text-[9px] sm:text-sm md:text-base font-bold hover:text-accent transition-colors pt-2 md:pt-4 border-t border-slate-100 w-full justify-center mt-auto"
                 >
                   زيارة الموقع
-                  <i
-                    class="ph ph-arrow-up-right font-bold text-xs md:text-lg"
-                  ></i>
                 </a>
               </div>
             </article>
@@ -827,7 +823,6 @@
                   class="inline-flex items-center gap-1 md:gap-2 text-primary font-bold hover:text-accent transition-colors pt-4 border-t border-slate-100 w-full justify-center mt-auto"
                 >
                   زيارة الموقع
-                  <i class="ph-bold ph-arrow-up-right text-lg"></i>
                 </a>
               </div>
             </article>
@@ -983,10 +978,149 @@
             </p>
           </div>
         </div>
+
+        <!-- QR Code Content -->
+        <div
+          id="tab-qr"
+          class="tab-content hidden animate-fade-in flex-col items-center content-center px-4 w-full"
+        >
+          <div
+            class="w-full max-w-3xl mx-auto bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 text-center shadow-lg relative overflow-hidden"
+          >
+            <!-- Badge overlaying top -->
+            <div class="absolute top-4 left-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-50 text-amber-600 border border-amber-200 text-xs font-bold rounded-full">
+                <span class="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
+                غير متوفر حالياً
+              </span>
+            </div>
+            
+            <div
+              class="w-16 h-16 bg-slate-50 border border-slate-200 rounded-full flex items-center justify-center mx-auto mb-6 text-accent shadow-inner"
+            >
+              <i class="ph-fill ph-qr-code text-3xl"></i>
+            </div>
+            
+            <h3 class="text-2xl md:text-3xl font-bold text-primary mb-6">
+              مشروع الـ QR والـ NFC الذكي
+            </h3>
+            
+            <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto text-right font-semibold">
+              وفر جهد ووقت وزد مبيعاتك بنسبة 90٪ عن طريق هذه الخدمة حيث سيتم تصميم موقع الكتروني لمحلك او شركتك او مهنك ايا كانت وصنع qr مخصص بمجرد مسحه سيتم توجيه الزبون لصفحة الويب الموقع الالكتروني وسيرى كافة تفاصيل المحل وشرح عنها.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- FAQ Section -->
+        <!-- Other Services Section -->
+    <section id="other-services" class="py-24 px-4 sm:px-6 max-w-7xl mx-auto border-t border-slate-100">
+      <div class="text-center mb-16 fade-in-up">
+        <h2
+          class="text-3xl md:text-5xl font-bold font-heading text-primary inline-block relative border-b-4 border-accent pb-2"
+        >
+          خدمات أخرى
+        </h2>
+        <p class="mt-4 text-slate-600 text-xs sm:text-lg">
+          نقدم خدمات رقمية متخصصة ومتميزة لدعم حماية ونجاح موقعك على محركات البحث ومنصات الذكاء الاصطناعي
+        </p>
+      </div>
+
+      <!-- Compact Interactive Service Cards -->
+      <div class="grid grid-cols-3 gap-1.5 sm:gap-4 md:gap-6 max-w-5xl mx-auto fade-in-up">
+        
+        <!-- Service Card 1 -->
+        <div
+          id="service-card-1"
+          class="service-tab-card cursor-pointer border-2 rounded-xl md:rounded-2xl p-2.5 py-4 md:py-8 flex flex-col items-center justify-center transition-all duration-300 text-center select-none bg-white border-slate-200/80 hover:border-slate-300 shadow-sm"
+          onclick="selectService(1)"
+        >
+          <div class="w-9 h-9 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-slate-50 flex items-center justify-center text-accent mb-2 md:mb-4 shrink-0 shadow-inner">
+            <i class="ph-fill ph-trend-up text-slate-400 text-base sm:text-2xl md:text-3xl transition-colors duration-300"></i>
+          </div>
+          <h3 class="text-[10px] xs:text-[11px] sm:text-base md:text-xl font-bold font-heading text-primary leading-tight transition-all duration-200">
+            تحسين محركات البحث والـ SEO
+          </h3>
+        </div>
+
+        <!-- Service Card 2 -->
+        <div
+          id="service-card-2"
+          class="service-tab-card cursor-pointer border-2 rounded-xl md:rounded-2xl p-2.5 py-4 md:py-8 flex flex-col items-center justify-center transition-all duration-300 text-center select-none bg-white border-slate-200/80 hover:border-slate-300 shadow-sm"
+          onclick="selectService(2)"
+        >
+          <div class="w-9 h-9 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-slate-50 flex items-center justify-center text-accent mb-2 md:mb-4 shrink-0 shadow-inner">
+            <i class="ph-fill ph-shield-check text-slate-400 text-base sm:text-2xl md:text-3xl transition-colors duration-300"></i>
+          </div>
+          <h3 class="text-[10px] xs:text-[11px] sm:text-base md:text-xl font-bold font-heading text-primary leading-tight transition-all duration-200">
+            إغلاق الثغرات الأمنية
+          </h3>
+        </div>
+
+        <!-- Service Card 3 -->
+        <div
+          id="service-card-3"
+          class="service-tab-card cursor-pointer border-2 rounded-xl md:rounded-2xl p-2.5 py-4 md:py-8 flex flex-col items-center justify-center transition-all duration-300 text-center select-none bg-white border-slate-200/80 hover:border-slate-300 shadow-sm"
+          onclick="selectService(3)"
+        >
+          <div class="w-9 h-9 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-slate-50 flex items-center justify-center text-accent mb-2 md:mb-4 shrink-0 shadow-inner">
+            <i class="ph-fill ph-palette text-slate-400 text-base sm:text-2xl md:text-3xl transition-colors duration-300"></i>
+          </div>
+          <h3 class="text-[10px] xs:text-[11px] sm:text-base md:text-xl font-bold font-heading text-primary leading-tight transition-all duration-200">
+            تصميم الصور والهويات البصرية
+          </h3>
+        </div>
+
+      </div>
+
+      <!-- Detailed Panel below cards -->
+      <div id="service-details-panel" class="mt-8 md:mt-12 max-w-4xl mx-auto hidden fade-in-up">
+        <div class="bg-gradient-to-r from-slate-50 to-white border-2 border-slate-200 rounded-2xl md:rounded-3xl p-5 sm:p-7 md:p-8 shadow-md relative overflow-hidden transition-all duration-300">
+          <!-- Colorful indicator badge inside panel -->
+          <div class="absolute top-0 right-0 left-0 h-1.5 bg-gradient-to-r from-accent to-[#00cfff]"></div>
+          
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div class="space-y-3 flex-1">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-accent shrink-0" id="detail-icon-bg">
+                  <i class="ph-fill ph-trend-up text-xl text-accent" id="detail-icon-element"></i>
+                </div>
+                <div>
+                  <h4 class="text-sm sm:text-lg md:text-2xl font-bold font-heading text-primary leading-tight" id="detail-title">
+                    تحسين محركات البحث والـ SEO
+                  </h4>
+                  <div class="mt-1 flex items-center gap-1.5">
+                    <span class="text-[9px] xs:text-[11px] sm:text-xs text-slate-400 font-bold">السعر:</span>
+                    <span class="inline-block px-2.5 py-0.5 bg-emerald-50 text-emerald-600 border border-emerald-200 text-[10px] xs:text-[12px] sm:text-sm font-bold rounded-full" id="detail-price">
+                      10$ فقط
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <p class="text-[11px] xs:text-[13px] sm:text-base md:text-lg text-slate-600 leading-relaxed font-semibold pt-2 text-right" id="detail-desc">
+                تحسين الـ SEO، والـ Geo، والكلمات المفتاحية، والوصف، وملفات خريطة الموقع (Sitemap) والصفحات؛ ليتصدر موقعك محركات البحث وأجوبة الذكاء الإصطناعي.
+              </p>
+            </div>
+
+            <div class="shrink-0 flex items-center md:self-end mt-2 md:mt-0">
+              <a
+                id="detail-whatsapp-btn"
+                href="https://wa.me/212773963897?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20SyraBit%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%AA%D8%AD%D8%B3%D9%8A%D9%86%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9%20%D9%84%D9%85%D8%AD%D8%B1%D9%83%D8%A7%D8%AA%20%D8%A7%D9%84%D8%A8%D8%AD%D8%AB%20(SEO%2FGEO)%20%D8%A8%D9%82%D9%8A%D9%85%D8%A9%2010%24"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-center gap-1.5 md:gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white text-xs sm:text-sm md:text-lg font-bold py-2.5 px-4 md:py-3.5 md:px-6 rounded-xl md:rounded-2xl transition-all shadow-[0_4px_15px_rgba(37,211,102,0.15)] hover:shadow-[0_4px_22px_rgba(37,211,102,0.30)] hover:-translate-y-0.5 active:translate-y-0 w-full md:w-auto"
+              >
+                <i class="ph-fill ph-whatsapp-logo text-sm sm:text-xl md:text-2xl"></i>
+                <span id="detail-btn-text">طلب الخدمة</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- FAQ Section -->
     <section id="faq" class="py-24 px-6 max-w-4xl mx-auto">
       <div class="text-center mb-16 fade-in-up">
         <h2
@@ -1215,6 +1349,85 @@
     </footer>
 
     <script>
+            // Services Dynamic Interactive Selection
+      const servicesData = {
+        1: {
+          title: "تحسين محركات البحث والـ SEO",
+          price: "10$ فقط",
+          desc: "تحسين الـ SEO، والـ Geo، والكلمات المفتاحية، والوصف، وملفات خريطة الموقع (Sitemap) والصفحات؛ ليتصدر موقعك محركات البحث وأجوبة الذكاء الإصطناعي.",
+          btnText: "طلب الخدمة",
+          whatsappUrl: "https://wa.me/212773963897?text=" + encodeURIComponent("مرحبا SyraBit، أرغب في طلب خدمة تحسين المواقع لمحركات البحث (SEO/GEO) بقيمة 10$"),
+          iconClass: "ph-trend-up"
+        },
+        2: {
+          title: "إغلاق الثغرات الأمنية",
+          price: "25$ فقط",
+          desc: "فرصة لتأمين موقعك وحمايته من الاختراق! تتضمن شرحاً تفصيلياً لحماية المواقع والمتاجر من الاختراق وفحص الأكواد وتأمين قواعد البيانات لضمان بيئة موثوقة تماماً.",
+          btnText: "طلب واتساب",
+          whatsappUrl: "https://wa.me/212773963897?text=" + encodeURIComponent("مرحبا SyraBit، أرغب في طلب خدمة إغلاق الثغرات الأمنية بقيمة 25$"),
+          iconClass: "ph-shield-check"
+        },
+        3: {
+          title: "تصميم الصور والهويات البصرية",
+          price: "السعر حسب الطلب",
+          desc: "تصميم احترافي ومبتكر للشعارات والهويات البصرية الكاملة، وصور المنتجات والبنرات المناسبة تماماً لموقعك الإلكتروني، متجرك، أو محلك التجاري لتلفت أنظار عملائك وتعزز علامتك التجارية.",
+          btnText: "طلب الخدمة",
+          whatsappUrl: "https://wa.me/212773963897?text=" + encodeURIComponent("مرحبا SyraBit، أرغب في طلب خدمة تصميم الصور والهويات البصرية"),
+          iconClass: "ph-palette"
+        }
+      };
+
+      function selectService(serviceId) {
+        // Toggle Active styles on tab cards
+        const allTabCards = document.querySelectorAll('.service-tab-card');
+        allTabCards.forEach(card => {
+          card.classList.remove('active-service');
+          // Reset child icons to gray text color
+          const icon = card.querySelector('i');
+          if (icon) {
+            icon.classList.remove('text-accent');
+            icon.classList.add('text-slate-400');
+          }
+        });
+
+        // Add Active style to the selected card
+        const selectedCard = document.getElementById(`service-card-${serviceId}`);
+        if (selectedCard) {
+          selectedCard.classList.add('active-service');
+          const activeIcon = selectedCard.querySelector('i');
+          if (activeIcon) {
+            activeIcon.classList.remove('text-slate-400');
+            activeIcon.classList.add('text-accent');
+          }
+        }
+
+        // Update the dynamic detailed panel information below
+        const data = servicesData[serviceId];
+        if (data) {
+          document.getElementById('detail-title').textContent = data.title;
+          document.getElementById('detail-price').textContent = data.price;
+          document.getElementById('detail-desc').textContent = data.desc;
+          document.getElementById('detail-btn-text').textContent = data.btnText;
+          document.getElementById('detail-whatsapp-btn').href = data.whatsappUrl;
+
+          // Update detailed icon
+          const iconElement = document.getElementById('detail-icon-element');
+          if (iconElement) {
+            iconElement.className = `ph-fill ${data.iconClass} text-xl text-accent`;
+          }
+
+          // Smooth fade-in animation for detail updates
+          const panel = document.getElementById('service-details-panel');
+          if (panel) {
+            panel.classList.remove('hidden');
+            panel.classList.remove('fade-in-up');
+            // Trigger browser reflow to restart animation
+            void panel.offsetWidth;
+            panel.classList.add('fade-in-up');
+          }
+        }
+      }
+
       // Initialize Year
       document.getElementById("year").textContent = new Date().getFullYear();
 
