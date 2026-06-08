@@ -1,6 +1,8 @@
 {
-  "name": "",
-  "description": "",
+  "name": "SyraBit",
+  "description": "موقع شركة سيرابت للحلول البرمجية وتطوير المواقع والمتاجر الإلكترونية وحلول الدفع الإلكتروني في سوريا.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
